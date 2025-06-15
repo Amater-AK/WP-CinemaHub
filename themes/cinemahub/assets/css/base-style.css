@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: "Montserrat";
+    src: local("Montserrat"), url("../fonts/Montserrat/Montserrat-SemiBold.woff2") format("woff2"),
+        url("../fonts/Montserrat/Montserrat-SemiBold.woff") format("woff"),
+        url("../fonts/Montserrat/Montserrat-SemiBold.ttf") format("truetype");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Montserrat";
+    src: local("Montserrat"), url("../fonts/Montserrat/Montserrat-Bold.woff2") format("woff2"),
+        url("../fonts/Montserrat/Montserrat-Bold.woff") format("woff"),
+        url("../fonts/Montserrat/Montserrat-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Open_Sans";
+    src: local("Open_Sans"), url("../fonts/Open_Sans/OpenSans-Regular.woff2") format("woff2"),
+        url("../fonts/Open_Sans/OpenSans-Regular.woff") format("woff"),
+        url("../fonts/Open_Sans/OpenSans-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --wrapper-width: 77rem;
+    --wrapper-offset-x: 1rem;
+}
+
+@layer base {
+    body {
+        @apply font-primary font-normal text-primary-text bg-primary-bg;
+        /* text-sm sm:text-base */
+    }
+
+    h1,
+    h2,
+    h3 {
+        @apply font-heading font-bold text-secondary-text;
+    }
+
+    h1 {
+        @apply text-4xl md:text-5xl;
+    }
+
+    h2 {
+        @apply text-2xl;
+    }
+
+    h3 {
+        @apply text-lg;
+    }
+}
+
+@theme {
+    --font-heading: "Montserrat", "sans-serif";
+    --font-primary: "Open_Sans", "sans-serif";
+
+    --color-primary-bg: #0a0a0a;
+    --color-primary-bg-alt: #121212;
+    --color-secondary-bg: #1a1a1a;
+    --color-primary-text: #9ca3af;
+    --color-primary-text-alt: #d1d5db;
+    --color-secondary-text: #ffffff;
+    --color-accents-color: #00d4ff;
+    --color-border-color: #2a2a2a;
+}
+
+@utility content-wrapper {
+    inline-size: min(var(--wrapper-width, 0), 100% - 2 * var(--wrapper-offset-x, 0));
+    margin-inline: auto;
+}
+
+@utility footer-at-bottom {
+    min-block-size: 100svh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+@utility disable-scrolling {
+    block-size: 100%;
+    overflow: clip;
+}
+
+@utility embeded-video {
+    position: relative;
+    max-width: 100%;
+    height: auto;
+    padding-bottom: 56.25%;
+    overflow: hidden;
+}
+
+.embeded-video iframe {
+    position: absolute;
+    inline-size: 100%;
+    block-size: 100%;
+    top: 0;
+    left: 0;
+}
+
+@layer components {
+    .icon {
+        @apply inline-block size-7 fill-current;
+    }
+
+    .button-square {
+        @apply inline-block p-2 text-accents-color bg-secondary-bg border border-border-color hover:bg-accents-color/20 hover:border-current active:bg-accents-color/20 active:border-current rounded-lg duration-300 cursor-pointer;
+    }
+
+    .highlight {
+        @apply text-accents-color;
+    }
+}
